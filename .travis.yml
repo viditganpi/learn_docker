@@ -6,5 +6,15 @@ before_install:
  - docker build -t vidiganpi10/learn_docker_3 -f Dockerfile.dev .
 
 script:
- - docker run -e CI=true viditgnapi10/learn_docker_3 npm run test
- 
+ - docker run viditgnapi10/learn_docker_3 npm run test -- --coverage
+
+deploy:
+ edge: true
+ provider: elasticbeanstalk
+ region: "us-east-2"
+ app: "learn_docker_3"
+ env: "LearnDocker3-env"
+ bucket_env: "elasticbeanstalk-us-east-2-921311410514"
+ bucket_path: "learn_docker_3"
+ on:
+  branch: master
