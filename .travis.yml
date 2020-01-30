@@ -14,7 +14,10 @@ deploy:
  region: "us-east-2"
  app: "learn_docker_3"
  env: "LearnDocker3-env"
- bucket_env: "elasticbeanstalk-us-east-2-921311410514"
+ bucket_name: "elasticbeanstalk-us-east-2-921311410514"
  bucket_path: "learn_docker_3"
  on:
   branch: master
+ access_key_id: $AWS_ACCESS_KEY
+ secret_access_key:
+  secure: "$AWS_SECRET_KEY"
